@@ -145,7 +145,6 @@ public class App {
     }
     private static void option8() {
         studentList = studentDAO.getAll();
-        studentList = studentDAO.getAll();
         studentList.stream().sorted(Comparator.comparing(Student::getFull_name)).forEach(System.out::println);
     }
 
