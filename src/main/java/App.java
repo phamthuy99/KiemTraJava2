@@ -1,10 +1,7 @@
 import dao.StudentDAO;
 import model.Student;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class App {
@@ -130,9 +127,7 @@ public class App {
         System.out.println(studentDAO.getByName(full_name));
     }
     private static void option6() {
-
         studentList = studentDAO.getAll();
-
         Collections.sort(studentList);
         for (Student s: studentList) {
             System.out.println("ID: " + s.getId() + " - NAME: "+ s.getFull_name() + " - GPA: " + s.getGpa());
@@ -150,13 +145,8 @@ public class App {
     }
     private static void option8() {
         studentList = studentDAO.getAll();
-
-        Collections.sort(studentList);
-        for (Student s: studentList) {
-            System.out.println("ID: " + s.getId() + " - NAME: "+ s.getFull_name());
-        }
-
-
+        studentList = studentDAO.getAll();
+        studentList.stream().sorted(Comparator.comparing(Student::getFull_name)).forEach(System.out::println);
     }
 
     public static void main(String[] args) {
